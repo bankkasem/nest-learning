@@ -17,4 +17,19 @@ describe('OrdersController', () => {
   it('should be defined', () => {
     expect(controller).toBeDefined();
   });
+
+  it('should return subtotal of 250', () => {
+    expect(controller.getSubtotal()).toBe(250);
+  });
+
+  it('should calculate subtotal from supplied items', () => {
+    expect(
+      controller.calculateSubtotal({
+        items: [
+          { price: 30, quantity: 3 },
+          { price: 20, quantity: 2 },
+        ],
+      }),
+    ).toBe(130);
+  });
 });
